@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona Główna</title>
+    <script>
+        function renderPage() {
+            document.getElementById('app').innerHTML = `
+                <form id="myForm">
+                    <label for="name">Imię:</label>
+                    <input type="text" id="name" name="name"><br><br>
+
+                    <label for="lastname">Nazwisko:</label>
+                    <input type="text" id="lastname" name="lastname"><br><br>
+
+                    <label for="age">Wiek:</label>
+                    <input type="number" id="age" name="age"><br><br>
+
+                    <label for="gender">Płeć:</label>
+                    <select name="gender" id="gender">
+                        <option value="M">Mężczyzna</option>
+                        <option value="W">Kobieta</option>
+                        <option value="other">Inne</option>
+                    </select><br><br>
+
+                    <label for="code">Numer albumu:</label>
+                    <input type="number" id="code" name="code"><br><br>
+
+                    <label for="studyField">Kierunek studiów:</label>
+                    <input type="text" id="studyField" name="studyField"><br><br>
+
+                    <input type="button" value="Wyślij" onclick="submitForm()">
+                </form>
+                <div id="formData"></div>
+            `;
+        }
+
+        function submitForm() {
+            var form = document.getElementById('myForm');
+            var formDataDiv = document.getElementById('formData');
+            formDataDiv.innerHTML = `
+                <p>Imię: ${form.name.value}</p>
+                <p>Nazwisko: ${form.lastname.value}</p>
+                <p>Wiek: ${form.age.value}</p>
+                <p>Płeć: ${form.gender.value}</p>
+                <p>Numer albumu: ${form.code.value}</p>
+                <p>Kierunek studiów: ${form.studyField.value}</p>
+            `;
+        }
+
+        window.onload = function() {
+            renderPage();
+        }
+    </script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+</html>
